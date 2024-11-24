@@ -68,10 +68,6 @@ function initializeSlider({
     (child) => child.tagName === "DIV"
   );
 
-  cardsArray.forEach((card, index) => {
-    card.classList.add(`card-${index + 1}`); //todo delete this for library code
-  });
-
   // Generate slider elements
   function createElement(tagName, className) {
     const element = document.createElement(tagName);
