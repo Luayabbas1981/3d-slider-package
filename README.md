@@ -86,7 +86,7 @@ This version of animate-slider has no external dependencies, making it lightweig
 
 ## Library demo
 
-[Library demo link...](https://luayabbas1981.github.io/3d-slider-demo/)
+[Library demo link link...](https://luayabbas1981.github.io/3d-slider-demo/)
 
 ## Other links
 
