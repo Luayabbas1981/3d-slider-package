@@ -1,0 +1,137 @@
+.slider-container-3d {
+  perspective: var(--perspective);
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.slider-container-3d .slider-3d {
+  width: 85%;
+  height: 90%;
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  transform-style: preserve-3d;
+}
+
+.slider-container-3d .slider-3d .card-3d {
+  width: var(--card-width);
+  height: var(--card-height);
+  position: absolute;
+  transform: rotateY(calc(var(--card-group-index) * var(--card-rotate)))
+    translateZ(var(--translate-z));
+
+  /* additional */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: rgb(255, 255, 255);
+  font-family: "Courier New", Courier, monospace;
+  border-top-left-radius: 2%;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 2%;
+  border-bottom-left-radius: 10%;
+}
+
+/* Buttons */
+.slider-container-3d .slider-prev-btn,
+.slider-container-3d .slider-next-btn {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  aspect-ratio: 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: var(--btn-opacity);
+}
+
+.slider-container-3d .slider-prev-btn {
+  background: url(./images/slider-prev-btn.png) no-repeat center;
+  background-size: 100%;
+  left: 1%;
+}
+
+.slider-container-3d .slider-next-btn {
+  background: url(./images/slider-next-btn.png) no-repeat center;
+  background-size: 100%;
+  right: 1%;
+}
+
+.slider-container-3d .slider-prev-group-btn,
+.slider-container-3d .slider-next-group-btn {
+  aspect-ratio: 1;
+  position: absolute;
+  top: 30%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  scale: 0.7;
+}
+.slider-container-3d .slider-prev-group-btn {
+  background: url(./images/slider-prev-group-btn.png) no-repeat center;
+  background-size: 100%;
+  left: 0;
+}
+.slider-container-3d .slider-next-group-btn {
+  background: url(./images/slider-next-group-btn.png) no-repeat center;
+  background-size: 100%;
+  right: 0;
+}
+
+/* Dots container */
+
+.slider-container-3d .dots-container {
+  width: 50%;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  column-gap: calc(var(--slides) * 2%);
+}
+.slider-container-3d .dot {
+  width: calc(10% / var(--slides));
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--dot-color);
+}
+.slider-container-3d .active-dot {
+  background-color: var(--active-dot);
+}
+
+/* Animations for slider rotation */
+.always-rotate-on {
+  animation: always-rotate-on var(--always-rotate-on-duration)
+    calc(var(--transition)) infinite linear;
+  cursor: pointer;
+}
+.always-rotate-off {
+  animation: always-rotate-off 1s ease-out;
+  cursor: pointer;
+}
+@keyframes always-rotate-on {
+  from {
+    transform: rotateY(var(--current-rotate-angel));
+  }
+  to {
+    transform: rotateY(var(--full-round));
+  }
+}
+@keyframes always-rotate-off {
+  from {
+    transform: rotateY(var(--slider-current-rotate));
+  }
+  to {
+    transform: rotateY(var(--current-rotate-angel));
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "3d-slider",
+  "version": "1.0.0",
+  "description": "A customizable 3d slider component",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack --watch"
+  },
+  "keywords": [
+    "slider",
+    "animation",
+    "carousel",
+    "JavaScript"
+  ],
+  "author": "luay_abbas",
+  "license": "ISC",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {}
+}
