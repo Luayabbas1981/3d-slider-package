@@ -24,18 +24,6 @@
   position: absolute;
   transform: rotateY(calc(var(--card-group-index) * var(--card-rotate)))
     translateZ(var(--translate-z));
-
-  /* additional */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  color: rgb(255, 255, 255);
-  font-family: "Courier New", Courier, monospace;
-  border-top-left-radius: 2%;
-  border-top-right-radius: 10%;
-  border-bottom-right-radius: 2%;
-  border-bottom-left-radius: 10%;
 }
 
 /* Buttons */
