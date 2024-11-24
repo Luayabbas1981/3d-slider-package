@@ -374,14 +374,3 @@ function initializeSlider({
     }
   });
 }
-
-initializeSlider({
-  sliderContainerClass: "slider",
-  transitionDuration: 2,
-  alwaysOnMode: false,
-  alwaysOnDesktopDuration: 10,
-  alwaysOnMobileDuration: 5,
-  cardsToShowMobile: 2,
-  dotsMode: true,
-  dotColor: "#959899",
-});
