@@ -14,7 +14,7 @@
     "JavaScript"
   ],
   "author": "luay_abbas",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "dist",
     "src",
