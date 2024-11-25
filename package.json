@@ -2,9 +2,8 @@
   "name": "3d-slider",
   "version": "1.0.0",
   "description": "A customizable 3D cylindrical slider component for web projects.",
-  "main": "dist/bundle.js",
-  "module": "dist/module.js",
-  "types": "dist/types/index.d.ts",
+  "main": "src/index.js",
+  "style": "src/3d-slider.css",
   "files": [
     "dist/",
     "src/",
