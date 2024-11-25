@@ -1,25 +1,34 @@
 {
   "name": "3d-slider",
   "version": "1.0.0",
-  "description": "A customizable 3d slider component",
+  "description": "A customizable 3D cylindrical slider component for web projects.",
   "main": "dist/bundle.js",
-  "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack --watch"
-  },
-  "keywords": [
-    "slider",
-    "animation",
-    "carousel",
-    "JavaScript"
-  ],
-  "author": "luay_abbas",
-  "license": "MIT",
+  "module": "dist/module.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "dist",
-    "src",
+    "dist/",
+    "src/",
     "README.md",
     "LICENSE"
   ],
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development"
+  },
+  "keywords": [
+    "3d-slider",
+    "slider",
+    "cylindrical-animation",
+    "responsive-slider",
+    "javascript",
+    "animation"
+  ],
+  "author": "luay abbas",
+  "license": "MIT",
+  "homepage": "https://luayabbas1981.github.io/3d-slider-demo/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luayabbas1981/3d-slider-package"
+  },
   "dependencies": {}
 }
