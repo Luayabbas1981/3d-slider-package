@@ -16,10 +16,10 @@ A customizable animation slider component for web projects.
 - Always-On Rotation Control: When alwaysOnMode is enabled, users can toggle continuous rotation on or off by clicking or tapping - on the slider.
 - Customizable Dots: Includes configurable dots for group navigation with customizable colors.
 - Customizable screen size definitions:
-Large Screens (≥1280px): Up to cardsToShowLargeScreen.
-Medium Screens (1024px–1279px): Up to cardsToShowMediumScreen.
-Small Screens (768px–1023px): Up to cardsToShowSmallScreen.
-Mobile Screens (<768px): Discover triangle mode.
+  - Large Screens (≥1280px): Up to cardsToShowLargeScreen.
+  - Medium Screens (1024px–1279px): Up to cardsToShowMediumScreen.
+  - Small Screens (768px–1023px): Up to cardsToShowSmallScreen.
+  - Mobile Screens (<768px): Discover triangle mode.
 
 ## Installation
 
@@ -44,7 +44,7 @@ initializeSlider({
   cardsToShowSmallScreen: 4, // Number of cards visible on small screens (768px–1023px) - Default: 4
    cardsToShowMobile: 2, // Cards to show on mobile mode (min 2) (max 3) 'Triangle mode' (<768px) - Default: 2
   dotsMode: true, // Enable or disable navigation dots.
-  dotColor: "#959899", // HEX color for navigation dots. 
+  dotColor: "#959899", // HEX color for navigation dots (6 digit). 
 });
 
 ```
