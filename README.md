@@ -15,6 +15,11 @@ A customizable animation slider component for web projects.
 - Touch Support: Mobile-friendly design with touch gesture support for navigation.
 - Always-On Rotation Control: When alwaysOnMode is enabled, users can toggle continuous rotation on or off by clicking or tapping - on the slider.
 - Customizable Dots: Includes configurable dots for group navigation with customizable colors.
+- Customizable screen size definitions:
+Large Screens (≥1280px): Up to cardsToShowLargeScreen.
+Medium Screens (1024px–1279px): Up to cardsToShowMediumScreen.
+Small Screens (768px–1023px): Up to cardsToShowSmallScreen.
+Mobile Screens (<768px): Discover triangle mode.
 
 ## Installation
 
@@ -29,15 +34,19 @@ import { initializeSlider } from '3d-slider';
 import '3d-slider/src/3d-slider.css';
 
 initializeSlider({
-  sliderContainerClass: 'your-slider-container-class',
-  transitionDuration: 1, // Duration of card transitions in seconds.
-  alwaysOnMode: true, // Enable or disable always-on mode.
-  alwaysOnDesktopDuration: 15, // Continuous rotation duration in seconds for desktop (0 for no rotation).
-  alwaysOnMobileDuration: 5, // Continuous rotation duration in seconds for mobile (0 for no rotation).
-  cardsToShowMobile: 2, // Cards to show on mobile mode (min 2) (max 3).
-  dots: true, // Enable or disable navigation dots.
-  dotColor: '#03a9f4', // HEX color for the dots.
+  sliderContainerClass: "slider", // CSS class of the slider container - Required
+  transitionDuration: 2, // Transition duration for animations (in seconds) - Default: 2
+  alwaysOnMode: false, // Enable or disable continuous rotation mode - Default: false
+  alwaysOnDesktopDuration: 15, // Continuous rotation duration for desktop (in seconds) - Recommend: 15
+  alwaysOnMobileDuration: 5, // Continuous rotation duration for mobile (in seconds) - Recommend: 5
+  cardsToShowLargeScreen: 10, // Number of cards visible on large screens (≥1280px) - Default: 10
+  cardsToShowMediumScreen: 7, // Number of cards visible on medium screens (1024px–1279px) - Default: 7
+  cardsToShowSmallScreen: 4, // Number of cards visible on small screens (768px–1023px) - Default: 4
+   cardsToShowMobile: 2, // Cards to show on mobile mode (min 2) (max 3) 'Triangle mode' (<768px) - Default: 2
+  dotsMode: true, // Enable or disable navigation dots.
+  dotColor: "#959899", // HEX color for navigation dots. 
 });
+
 ```
 
 ### Options

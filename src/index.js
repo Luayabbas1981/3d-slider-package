@@ -1,13 +1,6 @@
-import "./3d-slider.css";
-import nextBtnImg from "./images/slider-next-btn.png";
-import prevBtnImg from "./images/slider-prev-btn.png";
-import nextGroupBtnImg from "./images/slider-next-group-btn.png";
-import prevGroupBtnImg from "./images/slider-prev-group-btn.png";
-
 // Slider values
 let visibleCardsArray = [];
 let dotsArray = [];
-let isXLargeScreen = null;
 let isLargeScreen = null;
 let isMediumScreen = null;
 let isSmallScreen = null;
@@ -34,6 +27,9 @@ function initializeSlider({
   alwaysOnMode,
   alwaysOnDesktopDuration,
   alwaysOnMobileDuration,
+  cardsToShowLargeScreen,
+  cardsToShowMediumScreen,
+  cardsToShowSmallScreen,
   cardsToShowMobile,
   dotsMode,
   dotColor,
@@ -68,6 +64,10 @@ function initializeSlider({
     (child) => child.tagName === "DIV"
   );
 
+  cardsArray.forEach((card, index) => {
+    card.classList.add(`card-${index + 1}`); //todo delete this for library code
+  });
+
   // Generate slider elements
   function createElement(tagName, className) {
     const element = document.createElement(tagName);
@@ -77,17 +77,15 @@ function initializeSlider({
 
   const slider = createElement("div", "slider-3d");
 
-  const sliderNextGroupBtn = createElement("button", "slider-next-group-btn");
-  sliderNextGroupBtn.style.backgroundImage = `url(${nextGroupBtnImg})`;
-
   const sliderPrevGroupBtn = createElement("button", "slider-prev-group-btn");
-  sliderPrevGroupBtn.style.backgroundImage = `url(${prevGroupBtnImg})`;
 
-  const sliderNextBtn = createElement("button", "slider-next-btn");
-  sliderNextBtn.style.backgroundImage = `url(${nextBtnImg})`;
+  const sliderNextGroupBtn = createElement("button", "slider-next-group-btn");
 
   const sliderPrevBtn = createElement("button", "slider-prev-btn");
-  sliderPrevBtn.style.backgroundImage = `url(${prevBtnImg})`;
+
+  const sliderNextBtn = createElement("button", "slider-next-btn");
+
+  const navigateContainer = createElement("div", "navigate-container");
 
   const dotsContainer = createElement("div", "dots-container");
 
@@ -96,11 +94,12 @@ function initializeSlider({
 
   // Check screen size
   function setSize() {
-    isXLargeScreen = window.innerWidth >= 1800;
-    isLargeScreen = window.innerWidth >= 1600;
-    isMediumScreen = window.innerWidth >= 1100 && window.innerWidth < 1600;
-    isSmallScreen = window.innerWidth >= 700 && window.innerWidth < 1100;
-    isXSmallScreen = window.innerWidth < 700;
+    isLargeScreen = sliderContainer.clientWidth >= 1280;
+    isMediumScreen =
+      sliderContainer.clientWidth >= 1024 && sliderContainer.clientWidth < 1280;
+    isSmallScreen =
+      sliderContainer.clientWidth >= 768 && sliderContainer.clientWidth < 1024;
+    isXSmallScreen = sliderContainer.clientWidth < 768;
     setCardsToShowNumber();
     setVisibleCardsArray(initialIndex, initialIndex + cardsToShow);
   }
@@ -108,27 +107,26 @@ function initializeSlider({
 
   // Set cards to show
   function setCardsToShowNumber() {
-    if (isXLargeScreen) {
-      cardsToShow = 10;
-    } else if (isLargeScreen) {
-      cardsToShow = 9;
+    if (isLargeScreen) {
+      cardsToShow = cardsToShowLargeScreen || 9;
     } else if (isMediumScreen) {
-      cardsToShow = 7;
+      cardsToShow = cardsToShowMediumScreen || 7;
     } else if (isSmallScreen) {
-      cardsToShow = 4;
+      cardsToShow = cardsToShowSmallScreen || 4;
     } else if (isXSmallScreen) {
-      cardsToShow = cardsToShowMobile;
+      cardsToShow = cardsToShowMobile || 2;
     }
 
     const sliderHeight = slider.clientHeight;
     const sliderWidth = slider.clientWidth;
     perspectiveValue = sliderWidth * 1.08;
     translateZValue = sliderWidth * 0.347;
+
     currentTranslateZValue = sliderWidth * 0.245;
     function adjustBtnSize(btn) {
-      btn.style.width = `${
-        (window.innerWidth * 0.25) / (cardsToShow + xSmallMode)
-      }px`;
+      let btnWidth = parseInt(sliderContainer.clientWidth * 0.025);
+      isMobile ? (btnWidth = btnWidth * 3) : "";
+      sliderContainer.style.setProperty("--btn-width", btnWidth + "px");
     }
     adjustBtnSize(sliderNextBtn);
     adjustBtnSize(sliderPrevBtn);
@@ -154,7 +152,9 @@ function initializeSlider({
       "--card-width": `${
         (sliderWidth / cardsToShow) * (1.6 - xSmallMode / 2)
       }px`,
-      "--card-height": `${sliderHeight * 0.345}px`,
+      "--card-height": `${
+        isMobile ? sliderHeight * 0.5 : sliderHeight * 0.57
+      }px`,
     };
     for (const [property, value] of Object.entries(sliderProperties)) {
       slider.style.setProperty(property, value);
@@ -162,7 +162,7 @@ function initializeSlider({
   }
 
   // Set dots
-  function setDots() {
+  function setControls() {
     if (dotsMode) {
       dotsContainer.innerHTML = "";
       dotsArray = [];
@@ -175,6 +175,11 @@ function initializeSlider({
         if (index === 0) dot.classList.add("active-dot");
       }
     }
+    let navigateWidth = isMobile ? 75 : 25;
+    sliderContainer.style.setProperty("--nav-width", navigateWidth + "%");
+    navigateContainer.appendChild(sliderPrevBtn);
+    navigateContainer.appendChild(sliderNextBtn);
+    sliderContainer.appendChild(navigateContainer);
     dotsContainer.appendChild(sliderPrevGroupBtn);
     dotsContainer.appendChild(sliderNextGroupBtn);
     sliderContainer.appendChild(dotsContainer);
@@ -202,8 +207,7 @@ function initializeSlider({
         `${360 / (visibleCardsArray.length + xSmallMode)}deg`
       );
     });
-    sliderContainer.appendChild(sliderPrevBtn);
-    sliderContainer.appendChild(sliderNextBtn);
+
     function adjustSliderRotate() {
       const rotateAngel = 360 / (visibleCardsArray.length + xSmallMode);
       const additionalRotate = currentRotateAngle % rotateAngel;
@@ -219,7 +223,7 @@ function initializeSlider({
       }
     }
     adjustSliderRotate();
-    setDots();
+    setControls();
     setTimeout(() => {
       openCards();
     }, 2000);
@@ -285,7 +289,7 @@ function initializeSlider({
       }, transitionDuration * 500);
     }
   }
-  // Groups navigate
+
   function updateCurrentIndex(step) {
     currentIndex += step;
     if (currentIndex >= cardsArray.length) {
@@ -294,23 +298,39 @@ function initializeSlider({
       currentIndex = Math.max(cardsArray.length - cardsToShow, 0);
     }
   }
+
+  // Groups navigate
   function navigateGroup(direction) {
     if (!isTouching && visibleCardsArray.length !== cardsArray.length) {
       if (direction === "next") {
         groupIndex++;
+        if (groupIndex * cardsToShow >= cardsArray.length) {
+          groupIndex = 0;
+        }
         updateCurrentIndex(cardsToShow);
         setVisibleCardsArray(currentIndex, currentIndex + cardsToShow);
         updateActiveDot();
-      } else if (direction === "prev" && groupIndex > 0) {
-        console.log(groupIndex);
-        groupIndex--;
-        updateCurrentIndex(-cardsToShow);
+      } else if (direction === "prev") {
+        if (groupIndex === 0) {
+          groupIndex = Math.ceil(cardsArray.length / cardsToShow) - 1;
+          currentIndex =
+            cardsArray.length -
+            (cardsArray.length % cardsToShow || cardsToShow);
+        } else {
+          groupIndex--;
+          updateCurrentIndex(-cardsToShow);
+        }
         setVisibleCardsArray(currentIndex, currentIndex + cardsToShow);
         updateActiveDot();
       }
     }
   }
+
   // Slider events
+  sliderNextBtn.addEventListener("click", () => rotateSlider("next"));
+  sliderPrevBtn.addEventListener("click", () => rotateSlider("prev"));
+  sliderNextGroupBtn.addEventListener("click", () => navigateGroup("next"));
+  sliderPrevGroupBtn.addEventListener("click", () => navigateGroup("prev"));
 
   sliderContainer.addEventListener("touchstart", (e) => {
     isTouching = true;
@@ -336,10 +356,6 @@ function initializeSlider({
     isTouching = false;
   });
 
-  sliderNextBtn.addEventListener("click", () => rotateSlider("next"));
-  sliderPrevBtn.addEventListener("click", () => rotateSlider("prev"));
-  sliderNextGroupBtn.addEventListener("click", () => navigateGroup("next"));
-  sliderPrevGroupBtn.addEventListener("click", () => navigateGroup("prev"));
   slider.addEventListener("click", () => {
     const toggleAlwaysOnClass = (enable) => {
       slider.classList.toggle("always-rotate-on", enable);
