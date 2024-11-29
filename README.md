@@ -44,7 +44,7 @@ initializeSlider({
   cardsToShowSmallScreen: 4, // Number of cards visible on small screens (768px–1023px) - Default: 4
    cardsToShowMobile: 2, // Cards to show on mobile mode (min 2) (max 3) 'Triangle mode' (<768px) - Default: 2
   dotsMode: true, // Enable or disable navigation dots.
-  dotColor: "#959899", // HEX color for navigation dots (6 digit). 
+  dotColor: "#959899", // HEX color for navigation dots (6 digit).
 });
 
 ```
@@ -54,9 +54,12 @@ initializeSlider({
 - **sliderContainerClass**: The CSS class of the container element. - **Required**
 - **transitionDuration**: Transition duration (in seconds) for animations. - **Default**: 2
 - **alwaysOnMode**: Enable or disable always-on mode. - **Required**
-- **alwaysOnDesktopDuration**: Continuous rotation duration for desktop (in seconds). 
+- **alwaysOnDesktopDuration**: Continuous rotation duration for desktop (in seconds).
 - **alwaysOnMobileDuration**: Continuous rotation duration for mobile (in seconds).
-- **cardsToShowMobile**: Switch between 2 and 3 cards to show on mobile mode. - **Required**
+- **cardsToShowLargeScreen**: Number of cards visible on large screens (≥1280px). - Default: 10
+- **cardsToShowMediumScreen**: Number of cards visible on medium screens (1024px–1279px). - Default: 7
+- **cardsToShowSmallScreen**: Number of cards visible on small screens (768px–1023px). - Default: 4
+- **cardsToShowMobile**: Switch between (min 2) (max 3) 'Triangle mobile mode'. - **Required**
 - **dots**: Show navigation dots (`true` / `false`). - **Required**
 - **dotColor**: Color of the navigation dots "HEX Color 6 digit".
 
