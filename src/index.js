@@ -79,16 +79,16 @@ function initializeSlider({
 
   const slider = createElement("div", "slider-3d");
 
-  const sliderPrevGroupBtn = createElement("button", "slider-prev-group-btn");
+  const sliderPrevGroupBtn = createElement("div", "slider-prev-group-btn");
   sliderPrevGroupBtn.style.backgroundImage = `url(${prevGroupBtnImg})`;
 
-  const sliderNextGroupBtn = createElement("button", "slider-next-group-btn");
+  const sliderNextGroupBtn = createElement("div", "slider-next-group-btn");
   sliderNextGroupBtn.style.backgroundImage = `url(${nextGroupBtnImg})`;
 
-  const sliderPrevBtn = createElement("button", "slider-prev-btn");
+  const sliderPrevBtn = createElement("div", "slider-prev-btn");
   sliderPrevBtn.style.backgroundImage = `url(${prevBtnImg})`;
 
-  const sliderNextBtn = createElement("button", "slider-next-btn");
+  const sliderNextBtn = createElement("div", "slider-next-btn");
   sliderNextBtn.style.backgroundImage = `url(${nextBtnImg})`;
 
   const navigateContainer = createElement("div", "navigate-container");
