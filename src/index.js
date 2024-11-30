@@ -1,3 +1,9 @@
+import "./3d-slider.css";
+import nextBtnImg from "./images/slider-next-btn.png";
+import prevBtnImg from "./images/slider-prev-btn.png";
+import nextGroupBtnImg from "./images/slider-next-group-btn.png";
+import prevGroupBtnImg from "./images/slider-prev-group-btn.png";
+
 // Slider values
 let visibleCardsArray = [];
 let dotsArray = [];
@@ -74,12 +80,16 @@ function initializeSlider({
   const slider = createElement("div", "slider-3d");
 
   const sliderPrevGroupBtn = createElement("button", "slider-prev-group-btn");
+  sliderPrevGroupBtn.style.backgroundImage = `url(${prevGroupBtnImg})`;
 
   const sliderNextGroupBtn = createElement("button", "slider-next-group-btn");
+  sliderNextGroupBtn.style.backgroundImage = `url(${nextGroupBtnImg})`;
 
   const sliderPrevBtn = createElement("button", "slider-prev-btn");
+  sliderPrevBtn.style.backgroundImage = `url(${prevBtnImg})`;
 
   const sliderNextBtn = createElement("button", "slider-next-btn");
+  sliderNextBtn.style.backgroundImage = `url(${nextBtnImg})`;
 
   const navigateContainer = createElement("div", "navigate-container");
 
@@ -379,3 +389,4 @@ function initializeSlider({
     }
   });
 }
+export { initializeSlider };
