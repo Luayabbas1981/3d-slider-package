@@ -105,6 +105,7 @@ function initializeSlider({
     setCardsToShowNumber();
     setVisibleCardsArray(initialIndex, initialIndex + cardsToShow);
     adjustBtnSize();
+    setControls();
   }
   setSize();
 
@@ -216,7 +217,6 @@ function initializeSlider({
       }
     }
     adjustSliderRotate();
-    setControls();
     setTimeout(() => {
       openCards();
     }, 2000);
