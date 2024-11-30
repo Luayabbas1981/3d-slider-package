@@ -92,7 +92,13 @@ function initializeSlider({
   sliderContainer.innerHTML = "";
   sliderContainer.appendChild(slider);
 
-  // Check screen size
+  // Size functions
+
+  function adjustBtnSize(btn) {
+    let btnWidth = parseInt(sliderContainer.clientWidth * 0.025);
+    isMobile ? (btnWidth = btnWidth * 3) : "";
+    sliderContainer.style.setProperty("--btn-width", btnWidth + "px");
+  }
   function setSize() {
     isLargeScreen = sliderContainer.clientWidth >= 1280;
     isMediumScreen =
@@ -102,6 +108,8 @@ function initializeSlider({
     isXSmallScreen = sliderContainer.clientWidth < 768;
     setCardsToShowNumber();
     setVisibleCardsArray(initialIndex, initialIndex + cardsToShow);
+    const btnArray = sliderContainer.querySelectorAll("button")
+    btnArray.forEach(btn => adjustBtnSize(btn))
   }
   setSize();
 
@@ -114,24 +122,14 @@ function initializeSlider({
     } else if (isSmallScreen) {
       cardsToShow = cardsToShowSmallScreen || 4;
     } else if (isXSmallScreen) {
-      cardsToShow = cardsToShowMobile || 2;
+      cardsToShow = cardsToShowMobile;
     }
 
     const sliderHeight = slider.clientHeight;
     const sliderWidth = slider.clientWidth;
     perspectiveValue = sliderWidth * 1.08;
     translateZValue = sliderWidth * 0.347;
-
     currentTranslateZValue = sliderWidth * 0.245;
-    function adjustBtnSize(btn) {
-      let btnWidth = parseInt(sliderContainer.clientWidth * 0.025);
-      isMobile ? (btnWidth = btnWidth * 3) : "";
-      sliderContainer.style.setProperty("--btn-width", btnWidth + "px");
-    }
-    adjustBtnSize(sliderNextBtn);
-    adjustBtnSize(sliderPrevBtn);
-    adjustBtnSize(sliderNextGroupBtn);
-    adjustBtnSize(sliderPrevGroupBtn);
     const sliderContainerProperties = {
       "--slides": cardsToShow,
       "--perspective": `${perspectiveValue}px`,
