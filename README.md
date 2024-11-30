@@ -59,7 +59,7 @@ initializeSlider({
 - **cardsToShowLargeScreen**: Number of cards visible on large screens (≥1280px). - Default: 10
 - **cardsToShowMediumScreen**: Number of cards visible on medium screens (1024px–1279px). - Default: 7
 - **cardsToShowSmallScreen**: Number of cards visible on small screens (768px–1023px). - Default: 4
-- **cardsToShowMobile**: Switch between (min 2) (max 3) 'Triangle mobile mode'. - **Required**
+- **cardsToShowMobile**: Switch between (min 2) (max 3) 'Triangle mobile mode'(< 768px).
 - **dots**: Show navigation dots (`true` / `false`). - **Required**
 - **dotColor**: Color of the navigation dots "HEX Color 6 digit".
 
