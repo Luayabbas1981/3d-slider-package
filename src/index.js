@@ -64,10 +64,6 @@ function initializeSlider({
     (child) => child.tagName === "DIV"
   );
 
-  cardsArray.forEach((card, index) => {
-    card.classList.add(`card-${index + 1}`); //todo delete this for library code
-  });
-
   // Generate slider elements
   function createElement(tagName, className) {
     const element = document.createElement(tagName);
@@ -94,7 +90,7 @@ function initializeSlider({
 
   // Size functions
 
-  function adjustBtnSize(btn) {
+  function adjustBtnSize() {
     let btnWidth = parseInt(sliderContainer.clientWidth * 0.025);
     isMobile ? (btnWidth = btnWidth * 3) : "";
     sliderContainer.style.setProperty("--btn-width", btnWidth + "px");
@@ -108,8 +104,7 @@ function initializeSlider({
     isXSmallScreen = sliderContainer.clientWidth < 768;
     setCardsToShowNumber();
     setVisibleCardsArray(initialIndex, initialIndex + cardsToShow);
-    const btnArray = sliderContainer.querySelectorAll("button")
-    btnArray.forEach(btn => adjustBtnSize(btn))
+    adjustBtnSize();
   }
   setSize();
 

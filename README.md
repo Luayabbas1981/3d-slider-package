@@ -71,15 +71,6 @@ Click on the Slider:
 Clicking toggles between rotation and pause.
 When paused, the slider snaps to the nearest angle, aligning the active card in the viewport.
 
-### Dynamic Properties for Responsiveness
-
-- The slider dynamically adjusts to screen sizes, offering the following card configurations:
-- Extra Large Screens (≥1800px): Displays up to 10 cards.
-- Large Screens (≥1600px): Displays up to 9 cards.
-- Medium Screens (1100px - 1599px): Displays up to 7 cards.
-- Small Screens (700px - 1099px): Displays up to 4 cards.
-- Extra Small Screens (<700px): Displays cardsToShowMobile (max 3).
-
 ## Dependencies
 
 This version of animate-slider has no external dependencies, making it lightweight and easy to use. No additional packages are required to run the slider.
