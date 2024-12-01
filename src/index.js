@@ -98,7 +98,7 @@ function initializeSlider({
   sliderContainer.innerHTML = "";
   sliderContainer.appendChild(slider);
 
-  // Size functions
+  // Adjust sizes
 
   function adjustBtnSize() {
     let btnWidth = parseInt(sliderContainer.clientWidth * 0.025);
@@ -197,6 +197,7 @@ function initializeSlider({
       );
     });
   }
+
   // Set visible cards
   function setVisibleCardsArray(startIndex, lastIndex) {
     slider.innerHTML = "";
@@ -212,6 +213,7 @@ function initializeSlider({
       );
     });
 
+    // Slider rotate
     function adjustSliderRotate() {
       const rotateAngel = 360 / (visibleCardsArray.length + xSmallMode);
       const additionalRotate = currentRotateAngle % rotateAngel;
@@ -231,7 +233,8 @@ function initializeSlider({
       openCards();
     }, 2000);
   }
-  // Open cards
+
+  // Open cards animation
   function openCards() {
     translateZInterval = setInterval(() => {
       if (currentTranslateZValue >= translateZValue) {
@@ -246,17 +249,14 @@ function initializeSlider({
       }
     }, 5);
   }
+
   // Reset slider properties
   function resetRotateDeg(rotateValue, transitionValue) {
     slider.style.setProperty("--current-rotate-angel", rotateValue + "deg");
     slider.style.setProperty("--full-round", 360 + rotateValue + "deg");
     slider.style.setProperty("--transition", transitionValue + "s");
   }
-  // Button opacity handler
-  function resetBtnOpacity(opacityValue) {
-    sliderNextBtn.style.setProperty("--btn-opacity", opacityValue);
-    sliderPrevBtn.style.setProperty("--btn-opacity", opacityValue);
-  }
+
   // Get slider current rotate
   function getCurrentRotateY() {
     const computedStyle = window.getComputedStyle(slider);
@@ -274,6 +274,13 @@ function initializeSlider({
     }
     return 0;
   }
+
+  // Button opacity handler
+  function resetBtnOpacity(opacityValue) {
+    sliderNextBtn.style.setProperty("--btn-opacity", opacityValue);
+    sliderPrevBtn.style.setProperty("--btn-opacity", opacityValue);
+  }
+
   // Cards navigate
   function rotateSlider(direction) {
     if (!isAlwaysOnMode) {
