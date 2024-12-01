@@ -22,10 +22,16 @@ A customizable animation slider component for web projects.
 
 ## Installation
 
-Install via npm:
+Installation:
 
 ```bash
 npm install 3d-slider
+```
+
+or
+
+```bash
+yarn add 3d-slider
 ```
 
 ```bash
