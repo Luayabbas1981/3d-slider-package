@@ -39,7 +39,8 @@ import { initializeSlider } from '3d-slider';
 import '3d-slider/src/3d-slider.css';
 
 initializeSlider({
-  sliderContainerClass: "slider", // CSS class of the slider container - Required
+  sliderContainerClass: "slider", // CSS class of the slider container.
+  perspective: 1, // Slider container perspective.
   transitionDuration: 2, // Transition duration for animations (in seconds) - Default: 2
   alwaysOnMode: false, // Enable or disable continuous rotation mode.
   alwaysOnDesktopDuration: 15, // Continuous rotation duration for desktop (in seconds) - Recommend: 15
@@ -56,16 +57,17 @@ initializeSlider({
 
 ### Options
 
-- **sliderContainerClass**: The CSS class of the container element. - **Required**
+- **sliderContainerClass**: The CSS class of the container element.
+- **perspective**: 1 or higher to adjust container perspective.
 - **transitionDuration**: Transition duration (in seconds) for animations. - **Default**: 2
-- **alwaysOnMode**: Enable or disable always-on mode. - **Required**
+- **alwaysOnMode**: Enable or disable always-on mode.
 - **alwaysOnDesktopDuration**: Continuous rotation duration for desktop (in seconds).
 - **alwaysOnMobileDuration**: Continuous rotation duration for mobile (in seconds).
 - **cardsToShowLargeScreen**: Number of cards visible on large screens (≥1280px). - Default: 10
 - **cardsToShowMediumScreen**: Number of cards visible on medium screens (1024px–1279px). - Default: 7
 - **cardsToShowSmallScreen**: Number of cards visible on small screens (768px–1023px). - Default: 4
 - **cardsToShowMobile**: Switch between (min 2) (max 3) 'Triangle mobile mode'(< 768px).
-- **dots**: Show navigation dots (`true` / `false`). - **Required**
+- **dots**: Show navigation dots (`true` / `false`).
 - **dotColor**: Color of the navigation dots "HEX Color 6 digit".
 
 ### How to Use the Toggle for Always-On Mode

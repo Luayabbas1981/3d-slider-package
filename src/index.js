@@ -29,6 +29,7 @@ let isTouching = false;
 // Initialize 3D Slider
 function initializeSlider({
   sliderContainerClass,
+  perspective,
   transitionDuration,
   alwaysOnMode,
   alwaysOnDesktopDuration,
@@ -53,6 +54,7 @@ function initializeSlider({
     );
     return;
   }
+  perspective = perspective || 1;
   if (!transitionDuration) {
     transitionDuration = 2;
   }
@@ -133,7 +135,7 @@ function initializeSlider({
 
     const sliderHeight = slider.clientHeight;
     const sliderWidth = slider.clientWidth;
-    perspectiveValue = sliderWidth * 1.08;
+    perspectiveValue = sliderWidth * perspective;
     translateZValue = sliderWidth * 0.347;
     currentTranslateZValue = sliderWidth * 0.245;
     const sliderContainerProperties = {
