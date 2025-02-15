@@ -37,7 +37,8 @@ yarn add 3d-slider
 ```bash
 import { initializeSlider } from '3d-slider';
 import '3d-slider/src/3d-slider.css';
-
+```
+```bash
 initializeSlider({
   sliderContainerClass: "slider", // CSS class of the slider container.
   perspective: 1, // Slider container perspective.

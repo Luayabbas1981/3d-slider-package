@@ -100,8 +100,15 @@ function initializeSlider({
   sliderContainer.innerHTML = "";
   sliderContainer.appendChild(slider);
 
-  // Adjust sizes
+  // Reset previous style
+  function resetRotateValues() {
+    slider.style.setProperty("--current-rotate-angel", "0deg");
+    slider.style.setProperty("--full-round", "0deg");
+    slider.style.transform = "rotateY(0deg)";
+  }
+  resetRotateValues();
 
+  // Adjust sizes
   function adjustBtnSize() {
     let btnWidth = parseInt(sliderContainer.clientWidth * 0.025);
     isMobile ? (btnWidth = btnWidth * 3) : "";
